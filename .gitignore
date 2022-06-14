@@ -1,0 +1,14 @@
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+
+**/bin/
+bin-int/
+
+*.mk
+*.project
+**/.codelite/
+*.workspace
+
