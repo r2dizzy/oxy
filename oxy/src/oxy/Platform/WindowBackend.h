@@ -8,8 +8,17 @@
 
 namespace oxy {
 	
-	struct Backend_Window
+	class Window;
+
+	class Backend_Window
 	{
+	public:
+		Backend_Window( Window* owner, const std::string& title, int width, int height );
+		~Backend_Window() {}
+
+		void PollEvents();
+
+	public:
 #if defined( _WIN32 )
 		HWND Handle = nullptr;
 		HINSTANCE Instance = nullptr;
@@ -21,8 +30,13 @@ namespace oxy {
 		xcb_gc_t GraphicsContext;
 		xcb_screen_t* Screen;
 #endif
-	};
+		bool ShouldClose = false;
 
-	extern Backend_Window* Backend_CreateWindow( const std::string& title, int width, int height );
-	extern void Backend_DestroyWindow( Backend_Window* Window );
+	private:
+		WNDPROC OldWindowProc = nullptr;
+		static LRESULT WindowProc( HWND hwnd, UINT Msg, WPARAM wParam, LPARAM lParam );
+
+	private:
+		friend class Window;
+	};
 }

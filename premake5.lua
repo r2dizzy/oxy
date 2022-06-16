@@ -75,9 +75,9 @@ project "Window-Test"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	files { "%{prj.name}/src/**.h", "%{prj.name}/src/**.cpp" }
+	files { "Examples/%{prj.name}/src/**.h", "Examples/%{prj.name}/src/**.cpp" }
 
-	includedirs { "%{prj.name}/src/", "oxy/src" }
+	includedirs { "Examples/%{prj.name}/src/", "oxy/src" }
 
 	links { "oxy" }
 
